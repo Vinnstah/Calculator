@@ -8,24 +8,10 @@
 import Foundation
 import SwiftUI
 
-struct Calculator: Identifiable, Comparable, Hashable {
-    typealias StringLiteralType = Int
-    
-    var id: ObjectIdentifier
-    var number: Int
-    
-    static func < (lhs: Calculator, rhs: Calculator) -> Bool {
-        return true
-    }
-    
-    
-}
-
-
 enum Buttons: String {
     case zero, one, two, three, four, five, six
     case seven, eight, nine, plus, minus, equal
-    case multiply, divide, plusMinus, percent, ac
+    case multiply, divide, plusMinus, percent, ac, comma
     
     var title: String {
         switch self {
@@ -47,6 +33,7 @@ enum Buttons: String {
         case .multiply: return "X"
         case .ac: return "AC"
         case .equal: return "="
+        case .comma: return "."
         }
     }
 }
@@ -57,7 +44,7 @@ extension Buttons {
         switch self {
         case .minus, .plus, .multiply, .divide, .equal:
             return Color(.systemOrange)
-        case .ac, .plusMinus, .percent:
+        case .ac, .plusMinus, .percent, .comma:
             return Color(.lightGray)
         default:
             return Color(.gray)

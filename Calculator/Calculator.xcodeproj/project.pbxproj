@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E5058F0527BD0B7D00A2E2BB /* SumObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5058F0427BD0B7D00A2E2BB /* SumObject.swift */; };
+		E5058F0727BD0C9300A2E2BB /* SumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5058F0627BD0C9300A2E2BB /* SumViewModel.swift */; };
 		E599F47827BB067000314B25 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E599F47727BB067000314B25 /* MainView.swift */; };
 		E599F47B27BB084C00314B25 /* NumberVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E599F47A27BB084C00314B25 /* NumberVM.swift */; };
-		E599F47E27BB08DF00314B25 /* Numbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E599F47D27BB08DF00314B25 /* Numbers.swift */; };
+		E599F47E27BB08DF00314B25 /* ButtonsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E599F47D27BB08DF00314B25 /* ButtonsModel.swift */; };
 		E5E1894027BB058B00478AA1 /* CalculatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E1893F27BB058B00478AA1 /* CalculatorApp.swift */; };
 		E5E1894227BB058B00478AA1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E1894127BB058B00478AA1 /* ContentView.swift */; };
 		E5E1894427BB058D00478AA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5E1894327BB058D00478AA1 /* Assets.xcassets */; };
@@ -37,9 +39,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E5058F0427BD0B7D00A2E2BB /* SumObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumObject.swift; sourceTree = "<group>"; };
+		E5058F0627BD0C9300A2E2BB /* SumViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumViewModel.swift; sourceTree = "<group>"; };
 		E599F47727BB067000314B25 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		E599F47A27BB084C00314B25 /* NumberVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberVM.swift; sourceTree = "<group>"; };
-		E599F47D27BB08DF00314B25 /* Numbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Numbers.swift; sourceTree = "<group>"; };
+		E599F47D27BB08DF00314B25 /* ButtonsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsModel.swift; sourceTree = "<group>"; };
 		E5E1893C27BB058B00478AA1 /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5E1893F27BB058B00478AA1 /* CalculatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorApp.swift; sourceTree = "<group>"; };
 		E5E1894127BB058B00478AA1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -89,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				E599F47A27BB084C00314B25 /* NumberVM.swift */,
+				E5058F0627BD0C9300A2E2BB /* SumViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -96,7 +101,8 @@
 		E599F47C27BB08D200314B25 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E599F47D27BB08DF00314B25 /* Numbers.swift */,
+				E599F47D27BB08DF00314B25 /* ButtonsModel.swift */,
+				E5058F0427BD0B7D00A2E2BB /* SumObject.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -291,10 +297,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E599F47B27BB084C00314B25 /* NumberVM.swift in Sources */,
+				E5058F0727BD0C9300A2E2BB /* SumViewModel.swift in Sources */,
 				E5E1894227BB058B00478AA1 /* ContentView.swift in Sources */,
-				E599F47E27BB08DF00314B25 /* Numbers.swift in Sources */,
+				E599F47E27BB08DF00314B25 /* ButtonsModel.swift in Sources */,
 				E599F47827BB067000314B25 /* MainView.swift in Sources */,
 				E5E1894027BB058B00478AA1 /* CalculatorApp.swift in Sources */,
+				E5058F0527BD0B7D00A2E2BB /* SumObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
