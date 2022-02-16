@@ -8,20 +8,49 @@
 import SwiftUI
 
 struct MainView: View {
+    let buttons: [[Buttons]] = [
+        [.ac, .plusMinus, .percent, .divide],
+        [.seven, .eight, .nine, .multiply],
+        [.four, .five, .six, .minus],
+        [.one, .two, .three, .plus],
+        [.zero, .equal]
+        
+    ]
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 25)
-                .frame(width: .infinity, height: .infinity, alignment: .center)
-                .padding()
-                .foregroundColor(.blue)
-            VStack {
-                HStack {
-                    Number()
-                        .padding()
+        
+        VStack{
+            Spacer()
+            HStack {
+                Spacer()
+                Text("TEST")
+                    .font(.system(size: 45))
+                    .padding()
+            }
+            ForEach(buttons, id: \.self) { row in
+                HStack(spacing: 12) {
+                    ForEach(row, id: \.self) { button in
+                        Button {
+                            
+                        } label: {
+                            Text(button.title)
+                                .font(.system(size: 32))
+                                .frame(width: self.buttonWidth(), height: self.buttonWidth())
+                                .foregroundColor(.white)
+                                .background(button.backgroundColor)
+                                .cornerRadius(self.buttonWidth())
+                        }
+                        
+                    }
                 }
+                
             }
         }
     }
+    
+
+func buttonWidth() -> CGFloat {
+    return (UIScreen.main.bounds.width - 5 * 12) / 4
+}
 }
 
 struct MainView_Previews: PreviewProvider {
