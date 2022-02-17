@@ -8,9 +8,10 @@
 import SwiftUI
 
 
-extension CGFloat {
+extension Buttons {
     
     func buttonWidth(button: Buttons) -> CGFloat {
+//        func buttonWidth(button: Buttons) -> CGFloat {
         if button == .zero {
             return (UIScreen.main.bounds.width - 4 * 12) / 4 * 2
         }
