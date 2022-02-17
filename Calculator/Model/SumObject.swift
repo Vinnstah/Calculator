@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SumObject: ObservableObject {
+class DisplayAndSummarize: ObservableObject {
     @Published var display = ""
     @Published var firstNumber = ""
     @Published var secondNumber = ""

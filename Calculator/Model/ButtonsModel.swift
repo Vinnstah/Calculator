@@ -11,7 +11,7 @@ import SwiftUI
 enum Buttons: String {
     case zero, one, two, three, four, five, six
     case seven, eight, nine, plus, minus, equal
-    case multiply, divide, plusMinus, percent, ac, comma
+    case multiply, divide, plusMinus, percent, ac, comma, empty
     
     var title: String {
         switch self {
@@ -34,21 +34,7 @@ enum Buttons: String {
         case .ac: return "AC"
         case .equal: return "="
         case .comma: return "."
+        case .empty: return ""
         }
     }
 }
-
-extension Buttons {
-    
-    var backgroundColor: Color {
-        switch self {
-        case .minus, .plus, .multiply, .divide, .equal:
-            return Color(.systemOrange)
-        case .ac, .plusMinus, .percent, .comma:
-            return Color(.lightGray)
-        default:
-            return Color(.gray)
-        }
-    }
-}
-

@@ -22,17 +22,17 @@ struct Operators {
 //        
 //    }
     
-//    func addition(firstNumber: Float, secondNumber: Float) -> Float {
-//        return (firstNumber + secondNumber)
-//    }
-//
-//    func subtraction(firstNumber: Float, secondNumber: Float) -> Float {
-//        return (firstNumber - secondNumber)
-//    }
-//
-//    func multiplication(firstNumber: Float, secondNumber: Float) -> Float {
-//        return (firstNumber * secondNumber)
-//    }
+    func addition(firstNumber: Float, secondNumber: Float) -> Float {
+        return (firstNumber + secondNumber)
+    }
+
+    func subtraction(firstNumber: Float, secondNumber: Float) -> Float {
+        return (firstNumber - secondNumber)
+    }
+
+    func multiplication(firstNumber: Float, secondNumber: Float) -> Float {
+        return (firstNumber * secondNumber)
+    }
     
     func division(_ firstNumber: Int,_ secondNumber: Int) -> Int {
         return (firstNumber / secondNumber)

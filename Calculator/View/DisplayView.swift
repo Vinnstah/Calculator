@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DisplayView: View {
     
-    @EnvironmentObject var env: SumObject
+    @EnvironmentObject var env: DisplayAndSummarize
     var body: some View {
         HStack {
             Spacer()

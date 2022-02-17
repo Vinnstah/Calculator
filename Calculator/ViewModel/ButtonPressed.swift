@@ -8,17 +8,19 @@
 import Foundation
 import SwiftUI
 
-/// Will need to fix implementation
-//struct ButtonPressed: View {
-//    @EnvironmentObject var env: SumObject
-//    let button: Buttons
-//    /// Implement a UI animation when button is pressed
-//    //    let isButtonPressed: Bool
-//    var body: some View {
-//        switch button {
-//        case .plus, .minus, .divide, .multiply: env.saveFirstNumber(firstNum: button)
-//        case .equal: env.saveSecondNumber(secondNum: button)
-//        default: env.receiveInput(calculatorButton: button)
-//        }
-//    }
-//}
+/// Will need to fix implementation. This does not work yet and is not used.
+struct ButtonPressed {
+    @EnvironmentObject var env: DisplayAndSummarize
+    let button: Buttons
+    
+    func isTrue() {
+        switch button {
+        case .plus, .minus, .divide, .multiply:
+            return env.saveFirstNumber(firstNum: button)
+        case .equal:
+            return env.saveSecondNumber(secondNum: button)
+        default:
+            return env.receiveInput(calculatorButton: button)
+        }
+    }
+}
