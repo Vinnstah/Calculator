@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E5058F0527BD0B7D00A2E2BB /* SumObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5058F0427BD0B7D00A2E2BB /* SumObject.swift */; };
-		E5058F0727BD0C9300A2E2BB /* SumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5058F0627BD0C9300A2E2BB /* SumViewModel.swift */; };
+		E5058F0527BD0B7D00A2E2BB /* DisplayAndSummarize.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5058F0427BD0B7D00A2E2BB /* DisplayAndSummarize.swift */; };
+		E5058F0727BD0C9300A2E2BB /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5058F0627BD0C9300A2E2BB /* Operators.swift */; };
+		E52BE78427C052A2006C239E /* DisplayAndSaveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52BE78327C052A2006C239E /* DisplayAndSaveViewModel.swift */; };
 		E599F47827BB067000314B25 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E599F47727BB067000314B25 /* MainView.swift */; };
 		E599F47B27BB084C00314B25 /* ButtonsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E599F47A27BB084C00314B25 /* ButtonsViewModel.swift */; };
 		E599F47E27BB08DF00314B25 /* ButtonsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E599F47D27BB08DF00314B25 /* ButtonsModel.swift */; };
@@ -42,8 +43,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E5058F0427BD0B7D00A2E2BB /* SumObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumObject.swift; sourceTree = "<group>"; };
-		E5058F0627BD0C9300A2E2BB /* SumViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SumViewModel.swift; sourceTree = "<group>"; };
+		E5058F0427BD0B7D00A2E2BB /* DisplayAndSummarize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayAndSummarize.swift; sourceTree = "<group>"; };
+		E5058F0627BD0C9300A2E2BB /* Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
+		E52BE78327C052A2006C239E /* DisplayAndSaveViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayAndSaveViewModel.swift; sourceTree = "<group>"; };
 		E599F47727BB067000314B25 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		E599F47A27BB084C00314B25 /* ButtonsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsViewModel.swift; sourceTree = "<group>"; };
 		E599F47D27BB08DF00314B25 /* ButtonsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsModel.swift; sourceTree = "<group>"; };
@@ -102,8 +104,9 @@
 			isa = PBXGroup;
 			children = (
 				E599F47A27BB084C00314B25 /* ButtonsViewModel.swift */,
-				E5058F0627BD0C9300A2E2BB /* SumViewModel.swift */,
+				E5058F0627BD0C9300A2E2BB /* Operators.swift */,
 				E5FA2DFD27BE6D97002B2BB0 /* ButtonPressed.swift */,
+				E52BE78327C052A2006C239E /* DisplayAndSaveViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -112,7 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				E599F47D27BB08DF00314B25 /* ButtonsModel.swift */,
-				E5058F0427BD0B7D00A2E2BB /* SumObject.swift */,
+				E5058F0427BD0B7D00A2E2BB /* DisplayAndSummarize.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -307,14 +310,15 @@
 			files = (
 				E5E7014F27BE361900EA2928 /* DisplayView.swift in Sources */,
 				E599F47B27BB084C00314B25 /* ButtonsViewModel.swift in Sources */,
-				E5058F0727BD0C9300A2E2BB /* SumViewModel.swift in Sources */,
+				E5058F0727BD0C9300A2E2BB /* Operators.swift in Sources */,
 				E599F47E27BB08DF00314B25 /* ButtonsModel.swift in Sources */,
+				E52BE78427C052A2006C239E /* DisplayAndSaveViewModel.swift in Sources */,
 				E5E7015127BE378100EA2928 /* ButtonsView.swift in Sources */,
 				E599F47827BB067000314B25 /* MainView.swift in Sources */,
 				E5E1894027BB058B00478AA1 /* CalculatorApp.swift in Sources */,
 				E5FA2DFE27BE6D97002B2BB0 /* ButtonPressed.swift in Sources */,
 				E5E7014D27BE318D00EA2928 /* GridView.swift in Sources */,
-				E5058F0527BD0B7D00A2E2BB /* SumObject.swift in Sources */,
+				E5058F0527BD0B7D00A2E2BB /* DisplayAndSummarize.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

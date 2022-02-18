@@ -14,11 +14,11 @@ struct MainView: View {
             DisplayView()
             GridView()
         }.background(.black)
-        }
+    }
 }
 
-//struct MainView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        MainView(.environmentObject(DisplayAndSummarize()))
-//    }
-//}
+struct MainView_Previews: PreviewProvider {
+    static var previews: some View {
+        MainView().environmentObject(DisplayAndSummarize())
+    }
+}

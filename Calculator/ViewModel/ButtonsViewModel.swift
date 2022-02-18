@@ -32,15 +32,27 @@ extension Buttons {
     }
 }
 
-///Not sure how to implement yet
-///
-//struct ButtonsVM {
-//
-//    let buttons: [[Buttons]] = [
-//        [.ac, .plusMinus, .percent, .divide],
-//        [.seven, .eight, .nine, .multiply],
-//        [.four, .five, .six, .minus],
-//        [.one, .two, .three, .plus],
-//        [.zero, .comma, .equal]
-//    ]
-//}
+struct ButtonsLayout {
+    
+    let buttons: [Buttons]
+    let columns : [GridItem]
+    
+    init() {
+        self.buttons =
+        [
+            .ac, .plusMinus, .percent, .divide,
+            .seven, .eight, .nine, .multiply,
+            .four, .five, .six, .minus,
+            .one, .two, .three, .plus,
+            .empty, .zero, .comma, .equal
+        ]
+        
+        self.columns = [
+            GridItem(.flexible()),
+            GridItem(.flexible()),
+            GridItem(.flexible()),
+            GridItem(.flexible())
+        ]
+    }
+}
+

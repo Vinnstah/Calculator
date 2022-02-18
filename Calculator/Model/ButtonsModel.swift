@@ -13,6 +13,7 @@ enum Buttons: String {
     case seven, eight, nine, plus, minus, equal
     case multiply, divide, plusMinus, percent, ac, comma, empty
     
+    
     var title: String {
         switch self {
         case .zero: return "0"

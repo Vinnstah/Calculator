@@ -11,12 +11,21 @@ struct DisplayView: View {
     
     @EnvironmentObject var env: DisplayAndSummarize
     var body: some View {
-        HStack {
+        VStack {
+            HStack {
+                Text(env.calculationHistory)
+                    .font(.system(size: 20))
+                    .padding()
+                    .foregroundColor(.white)
+            }
             Spacer()
-            Text(env.display)
-                .font(.system(size: 60))
-                .padding()
-                .foregroundColor(.white)
+            HStack {
+                Spacer()
+                Text(env.display)
+                    .font(.system(size: 60))
+                    .padding()
+                    .foregroundColor(.white)
+            }
         }
     }
 }
