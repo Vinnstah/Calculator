@@ -11,8 +11,8 @@ struct MainView: View {
     var body: some View {
         VStack{
             Spacer()
-            DisplayView()
-            GridView()
+            DisplayView(viewModel: DisplayAndSummarize())
+            GridView(viewModel: DisplayAndSummarize())
         }.background(.black)
     }
 }

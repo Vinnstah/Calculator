@@ -8,16 +8,15 @@
 import SwiftUI
 
 struct ButtonsView: View {
-    let button: Buttons
-    var isButtonPressed: Bool
+    let button: Input
     
     var body: some View {
-        Text(button.title)
+        Text(button.displayValue)
             .font(.system(size: 32))
             .frame(width: button.buttonWidth(button: button),
                    height: (UIScreen.main.bounds.width - 5 * 12) / 4)
-            .foregroundColor(isButtonPressed ? .white : .black)
-            .background(isButtonPressed ? button.backgroundColor : .white)
+            .foregroundColor(.white)
+            .background(button.backgroundColor)
             .cornerRadius(button.buttonWidth(button: button))
     }
 }

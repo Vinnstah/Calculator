@@ -9,11 +9,11 @@ import SwiftUI
 
 struct DisplayView: View {
     
-    @EnvironmentObject var env: DisplayAndSummarize
+    @ObservedObject var viewModel: DisplayAndSummarize
     var body: some View {
         VStack {
             HStack {
-                Text(env.calculationHistory)
+                Text(viewModel.calculationHistory)
                     .font(.system(size: 20))
                     .padding()
                     .foregroundColor(.white)
@@ -21,7 +21,7 @@ struct DisplayView: View {
             Spacer()
             HStack {
                 Spacer()
-                Text(env.display)
+                Text(viewModel.display)
                     .font(.system(size: 60))
                     .padding()
                     .foregroundColor(.white)
@@ -32,6 +32,6 @@ struct DisplayView: View {
 
 struct DisplayView_Previews: PreviewProvider {
     static var previews: some View {
-        DisplayView()
+        DisplayView(viewModel: DisplayAndSummarize())
     }
 }
