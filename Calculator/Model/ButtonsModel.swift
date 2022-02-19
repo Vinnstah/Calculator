@@ -11,7 +11,7 @@ import SwiftUI
 enum Buttons: String {
     case zero, one, two, three, four, five, six
     case seven, eight, nine, plus, minus, equal
-    case multiply, divide, plusMinus, percent, ac, comma, empty
+    case multiply, divide, plusMinus, percent, ac, comma, memory
     
     
     var title: String {
@@ -35,7 +35,7 @@ enum Buttons: String {
         case .ac: return "AC"
         case .equal: return "="
         case .comma: return "."
-        case .empty: return ""
+        case .memory: return "M+"
         }
     }
 }

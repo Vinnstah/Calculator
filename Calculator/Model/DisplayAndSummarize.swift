@@ -13,4 +13,6 @@ class DisplayAndSummarize: ObservableObject {
     @Published var secondNumber = ""
     @Published var operatorUsed = ""
     @Published var calculationHistory = ""
+    @Published var previouslyPressedKey = ""
+    @Published var memory = ""
 }

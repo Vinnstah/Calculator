@@ -50,4 +50,18 @@ extension DisplayAndSummarize {
         self.operatorUsed = ""
         self.calculationHistory = ""
     }
+    
+    ///This currently works. Need to figure out exactly how to implement everything. Right now it just saves the display to memory. Will need additional variables to paste memory, clear the screen and remove memory. TO BE IMPLEMENTED.
+    func saveResults() {
+        self.memory = self.display
+    }
+    
+    ///This does not work. Might be better to implement a Bool that sets to true when a operator is being used? Might run into same issue as isButtonnPressed Bool then, so maybe have to convert enum to struct?
+    func checkPreviousInput(previousInput: Buttons) -> Bool {
+        switch previousInput {
+        case .minus, .plus, .multiply, .divide:
+            return true
+        default: return false
+        }
+    }
 }

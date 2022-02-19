@@ -19,11 +19,18 @@ struct GridView: View {
                   alignment: .leading) {
             ForEach(ButtonsLayout().buttons, id: \.self) { button in
                 Button {
+                    
                     /// Need to implement UI better. Right now all buttons toggle when you hit one of the operators. Intended behaviour is to only highlight that specific button. Would work if it's a variable in the enum?
                     switch button {
-                    case .plus, .minus, .divide, .multiply: env.saveFirstNumber(firstNum: button); isButtonPressed.toggle()
+                    case .plus, .minus, .divide, .multiply:
+                        guard env.checkPreviousInput(previousInput: button) == false else {
+                            env.saveFirstNumber(firstNum: button);
+                            isButtonPressed.toggle()
+                            break
+                        }
                     case .equal: env.saveSecondNumber(secondNum: button)
                     case .ac: env.allClear()
+                    case .memory: env.saveResults()
                     default: env.receiveInput(calculatorButton: button)
                     }
                 } label: {

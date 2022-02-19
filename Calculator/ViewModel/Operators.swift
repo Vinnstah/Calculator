@@ -10,9 +10,13 @@ import SwiftUI
 
 struct Operators {
     
+    ///Trying to figure out how to avoid force-unwrapping
     func addition(firstNumber: String, secondNumber: String) -> Float {
-        return (Float(firstNumber)! + Float(secondNumber)!)
+        guard firstNumber == "" else {
+            return (Float(firstNumber)! + Float(secondNumber)!)}
+        return 0
     }
+    
     
     func subtraction(firstNumber: String, secondNumber: String) -> Float {
         return (Float(firstNumber)! - Float(secondNumber)!)
@@ -26,4 +30,12 @@ struct Operators {
         return (Float(firstNumber)! / Float(secondNumber)!)
     }
     
+    ///Not finished yet, must be a better way to do it.
+    func percent(input: String) -> String {
+        let inputFloat = Float(input)
+        let result:Float = (inputFloat! / 100)
+        return String(result)
+    }
+    
 }
+

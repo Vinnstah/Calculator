@@ -10,9 +10,9 @@ import SwiftUI
 
 extension Buttons {
     func buttonWidth(button: Buttons) -> CGFloat {
-        if button == .zero {
-            return (UIScreen.main.bounds.width - 4 * 12) / 4 * 2
-        }
+//        if button == .zero {
+//            return (UIScreen.main.bounds.width - 4 * 12) / 4 * 2
+//        }
         return (UIScreen.main.bounds.width - 5 * 12) / 4
     }
 }
@@ -22,10 +22,8 @@ extension Buttons {
         switch self {
         case .minus, .plus, .multiply, .divide, .equal:
             return Color(.systemOrange)
-        case .ac, .plusMinus, .percent, .comma:
+        case .ac, .plusMinus, .percent, .comma, .memory:
             return Color(.lightGray)
-        case .empty:
-            return Color(.black).opacity(0)
         default:
             return Color(.gray)
         }
@@ -44,7 +42,7 @@ struct ButtonsLayout {
             .seven, .eight, .nine, .multiply,
             .four, .five, .six, .minus,
             .one, .two, .three, .plus,
-            .empty, .zero, .comma, .equal
+            .memory, .zero, .comma, .equal
         ]
         
         self.columns = [
