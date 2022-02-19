@@ -7,16 +7,18 @@
 
 import SwiftUI
 
-struct ButtonsView: View {
-    let button: Input
+struct InputView: View {
+    
+    let input: Input
     
     var body: some View {
-        Text(button.displayValue)
+        Text(input.displayValue)
             .font(.system(size: 32))
-            .frame(width: button.buttonWidth(button: button),
+            .frame(width: 100,
                    height: (UIScreen.main.bounds.width - 5 * 12) / 4)
-            .foregroundColor(.white)
-            .background(button.backgroundColor)
-            .cornerRadius(button.buttonWidth(button: button))
+            .foregroundColor(.black)
+            .background(.gray)
+            .cornerRadius(25)
     }
+    
 }

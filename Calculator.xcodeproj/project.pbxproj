@@ -13,7 +13,6 @@
 		E55EF4E827C14704000C59E6 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55EF4E727C14704000C59E6 /* Input.swift */; };
 		E599F47827BB067000314B25 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E599F47727BB067000314B25 /* MainView.swift */; };
 		E599F47B27BB084C00314B25 /* ButtonsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E599F47A27BB084C00314B25 /* ButtonsViewModel.swift */; };
-		E599F47E27BB08DF00314B25 /* ButtonsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E599F47D27BB08DF00314B25 /* ButtonsModel.swift */; };
 		E5E1894027BB058B00478AA1 /* CalculatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E1893F27BB058B00478AA1 /* CalculatorApp.swift */; };
 		E5E1894427BB058D00478AA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5E1894327BB058D00478AA1 /* Assets.xcassets */; };
 		E5E1894727BB058D00478AA1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5E1894627BB058D00478AA1 /* Preview Assets.xcassets */; };
@@ -23,7 +22,6 @@
 		E5E7014D27BE318D00EA2928 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E7014C27BE318D00EA2928 /* GridView.swift */; };
 		E5E7014F27BE361900EA2928 /* DisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E7014E27BE361900EA2928 /* DisplayView.swift */; };
 		E5E7015127BE378100EA2928 /* ButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E7015027BE378100EA2928 /* ButtonsView.swift */; };
-		E5FA2DFE27BE6D97002B2BB0 /* ButtonPressed.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5FA2DFD27BE6D97002B2BB0 /* ButtonPressed.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +48,6 @@
 		E55EF4E727C14704000C59E6 /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
 		E599F47727BB067000314B25 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		E599F47A27BB084C00314B25 /* ButtonsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsViewModel.swift; sourceTree = "<group>"; };
-		E599F47D27BB08DF00314B25 /* ButtonsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsModel.swift; sourceTree = "<group>"; };
 		E5E1893C27BB058B00478AA1 /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5E1893F27BB058B00478AA1 /* CalculatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorApp.swift; sourceTree = "<group>"; };
 		E5E1894327BB058D00478AA1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -63,7 +60,6 @@
 		E5E7014C27BE318D00EA2928 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 		E5E7014E27BE361900EA2928 /* DisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayView.swift; sourceTree = "<group>"; };
 		E5E7015027BE378100EA2928 /* ButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsView.swift; sourceTree = "<group>"; };
-		E5FA2DFD27BE6D97002B2BB0 /* ButtonPressed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPressed.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,7 +103,6 @@
 			children = (
 				E599F47A27BB084C00314B25 /* ButtonsViewModel.swift */,
 				E5058F0627BD0C9300A2E2BB /* Operators.swift */,
-				E5FA2DFD27BE6D97002B2BB0 /* ButtonPressed.swift */,
 				E52BE78327C052A2006C239E /* DisplayAndSaveViewModel.swift */,
 			);
 			path = ViewModel;
@@ -116,7 +111,6 @@
 		E599F47C27BB08D200314B25 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E599F47D27BB08DF00314B25 /* ButtonsModel.swift */,
 				E5058F0427BD0B7D00A2E2BB /* DisplayAndSummarize.swift */,
 				E55EF4E727C14704000C59E6 /* Input.swift */,
 			);
@@ -315,12 +309,10 @@
 				E5E7014F27BE361900EA2928 /* DisplayView.swift in Sources */,
 				E599F47B27BB084C00314B25 /* ButtonsViewModel.swift in Sources */,
 				E5058F0727BD0C9300A2E2BB /* Operators.swift in Sources */,
-				E599F47E27BB08DF00314B25 /* ButtonsModel.swift in Sources */,
 				E52BE78427C052A2006C239E /* DisplayAndSaveViewModel.swift in Sources */,
 				E5E7015127BE378100EA2928 /* ButtonsView.swift in Sources */,
 				E599F47827BB067000314B25 /* MainView.swift in Sources */,
 				E5E1894027BB058B00478AA1 /* CalculatorApp.swift in Sources */,
-				E5FA2DFE27BE6D97002B2BB0 /* ButtonPressed.swift in Sources */,
 				E5E7014D27BE318D00EA2928 /* GridView.swift in Sources */,
 				E5058F0527BD0B7D00A2E2BB /* DisplayAndSummarize.swift in Sources */,
 			);

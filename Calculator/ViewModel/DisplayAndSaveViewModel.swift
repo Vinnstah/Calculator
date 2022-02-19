@@ -9,13 +9,13 @@ import Foundation
 
 extension DisplayAndSummarize {
     
-    func receiveInput(calculatorButton: Buttons) {
-        self.display += calculatorButton.title
+    func receiveInput(calculatorButton: Input) {
+        self.display += calculatorButton.displayValue
     }
     
-    func saveFirstNumber(firstNum: Buttons) {
+    func saveFirstNumber(firstNum: Input) {
         self.firstNumber = self.display
-        self.operatorUsed = firstNum.title
+        self.operatorUsed = firstNum.displayValue
         if self.operatorUsed == "=" { return} else {
             
             self.calculationHistory += " " + self.display + " " + self.operatorUsed}
@@ -24,7 +24,7 @@ extension DisplayAndSummarize {
     }
     
     /// Currently a bug when you use sum -> the actual sum is added to the calculationHistory too. Need to fix.
-    func saveSecondNumber(secondNum: Buttons) {
+    func saveSecondNumber(secondNum: Input) {
         self.secondNumber = self.display
         self.calculationHistory += " " + self.display
         switch self.operatorUsed {
@@ -39,7 +39,7 @@ extension DisplayAndSummarize {
         default:
             print("ERROR")
         }
-        self.operatorUsed = secondNum.title
+        self.operatorUsed = secondNum.displayValue
         print("\(operatorUsed)")
     }
     
@@ -57,7 +57,7 @@ extension DisplayAndSummarize {
     }
     
     ///This does not work. Might be better to implement a Bool that sets to true when a operator is being used? Might run into same issue as isButtonnPressed Bool then, so maybe have to convert enum to struct?
-    func checkPreviousInput(previousInput: Buttons) -> Bool {
+    func checkPreviousInput(previousInput: Input.Operand) -> Bool {
         switch previousInput {
         case .minus, .plus, .multiply, .divide:
             return true
