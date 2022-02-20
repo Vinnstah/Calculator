@@ -8,17 +8,19 @@
 import SwiftUI
 
 struct MainView: View {
+    @ObservedObject var viewModel: InputGridViewModel
+    
     var body: some View {
-        VStack{
+        VStack {
             Spacer()
-            DisplayView(viewModel: DisplayAndSummarize())
-            GridView(viewModel: DisplayAndSummarize())
-        }.background(.black)
+            InputView(viewModel: viewModel)
+            GridView(viewModel: viewModel)
+        }.background(Color(.black))
     }
 }
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        MainView(viewModel: InputGridViewModel())
     }
 }

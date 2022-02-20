@@ -1,32 +1,26 @@
 //
-//  ButtonsView.swift
+//  GridView.swift
 //  Calculator
 //
-//  Created by Viktor Jansson on 2022-02-17.
+//  Created by Viktor Jansson on 2022-02-20.
 //
 
 import SwiftUI
 
 struct GridView: View {
-    @ObservedObject var viewModel: DisplayAndSummarize
+    @ObservedObject var viewModel: InputGridViewModel
+    
     var body: some View {
-        LazyVGrid(columns: ButtonLayout().columns,
-                  alignment: .leading) {
-            ForEach(ButtonLayout().buttons, id: \.self) { button in
-                Button {
-                    DisplayViewModel(viewModel: viewModel).toggleButton(button)
-                    }
-                 label: {
-                    InputView(input: button)
-                }
-            }
+        VStack {
+            Spacer()
+            GridViewModel(viewModel: viewModel)
+                .padding(.horizontal)
         }
     }
-    
 }
 
-struct ButtonsView_Previews: PreviewProvider {
+struct GridView_Previews: PreviewProvider {
     static var previews: some View {
-        GridView(viewModel: DisplayAndSummarize())
+        GridView(viewModel: InputGridViewModel())
     }
 }

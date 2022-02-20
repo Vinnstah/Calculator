@@ -11,7 +11,7 @@ import SwiftUI
 struct CalculatorApp: App {
     var body: some Scene {
         WindowGroup {
-            MainView().environmentObject(DisplayAndSummarize())
+            MainView(viewModel: InputGridViewModel())
         }
     }
 }
