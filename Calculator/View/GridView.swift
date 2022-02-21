@@ -2,25 +2,22 @@
 //  GridView.swift
 //  Calculator
 //
-//  Created by Viktor Jansson on 2022-02-20.
+//  Created by Alexander Cyon on 2022-02-21.
 //
 
 import SwiftUI
 
 struct GridView: View {
-    @ObservedObject var viewModel: InputGridViewModel
-    
+    @ObservedObject var viewModel: GridViewModel
+}
+
+extension GridView {
     var body: some View {
-        VStack {
-            Spacer()
-            GridViewModel(viewModel: viewModel)
-                .padding(.horizontal)
+        LazyVGrid(columns: viewModel.columns, spacing: InputViewModel.size/2 + 10) {
+            ForEach(viewModel.inputViewModels, id: \.self) { viewModel in
+                InputView(viewModel: viewModel)
+            }
         }
     }
 }
 
-struct GridView_Previews: PreviewProvider {
-    static var previews: some View {
-        GridView(viewModel: InputGridViewModel())
-    }
-}

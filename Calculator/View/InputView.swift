@@ -8,23 +8,28 @@
 import SwiftUI
 
 struct InputView: View {
-    @ObservedObject var viewModel: InputGridViewModel
+    @ObservedObject var viewModel: InputViewModel
+}
+
+extension InputView {
     var body: some View {
-        VStack{
-            Spacer()
-            HStack {
-                Spacer()
-                Text(viewModel.display)
-                    .foregroundColor(.white)
-                    .font(.system(size: 60))
-                    .padding()
-            }
-        }
+        Button(action: {
+            viewModel.wasPressed()
+        }, label: {
+            Text(viewModel.display)
+                .font(.title)
+                .background(
+                    Circle()
+                        .fill(viewModel.backgroundColor)
+                        .frame(width: InputViewModel.size, height: InputViewModel.size, alignment: .center)
+                        
+                )
+        })
     }
 }
 
 struct InputView_Previews: PreviewProvider {
     static var previews: some View {
-        InputView(viewModel: InputGridViewModel())
+        InputView(viewModel: .init(input: .digit(.eight), onPress: { _ in }))
     }
 }

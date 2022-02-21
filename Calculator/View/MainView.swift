@@ -7,20 +7,50 @@
 
 import SwiftUI
 
-struct MainView: View {
-    @ObservedObject var viewModel: InputGridViewModel
-    
+
+struct ForceFullScreen<Content>: View where Content: View {
+    @ViewBuilder let content: () -> Content
+
     var body: some View {
-        VStack {
-            Spacer()
-            InputView(viewModel: viewModel)
-            GridView(viewModel: viewModel)
-        }.background(Color(.black))
+        ZStack {
+            Color.black.edgesIgnoringSafeArea(.all)
+            content().padding()
+        }
     }
 }
 
-struct MainView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainView(viewModel: InputGridViewModel())
+
+
+struct MainView: View {
+    @ObservedObject var viewModel: MainViewModel
+}
+
+extension MainView {
+    var body: some View {
+        ForceFullScreen {
+            VStack(alignment: .trailing) {
+                Spacer()
+                display
+                inputs
+                Spacer()
+            }
+        }
+    }
+}
+
+private extension MainView {
+    @ViewBuilder
+    var display: some View {
+        Text(viewModel.display)
+            .font(.system(size: 80, weight: .semibold))
+            .foregroundColor(Color.white)
+            .padding([.leading, .bottom], 0)
+            .padding([.trailing], InputViewModel.size / 2)
+    }
+    
+    @ViewBuilder
+    var inputs: some View {
+        GridView(viewModel: .init(onPress: viewModel.onPress))
+            .padding()
     }
 }

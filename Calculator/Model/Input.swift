@@ -41,22 +41,36 @@ enum Input: Hashable {
 // MARK: -
 extension Input {
     enum Instruction: Hashable, Displayable {
-        case operand(Operand)
+        case `operator`(Operator)
         case stateChange(StateChange)
         
         var displayValue: String {
             switch self {
-            case .operand(let operand): return operand.displayValue
+            case .operator(let `operator`): return `operator`.displayValue
             case .stateChange(let stateChange): return stateChange.displayValue
+            }
+        }
+        
+        var `operator`: Operator? {
+            switch self {
+            case .`operator`(let `operator`): return `operator`
+            case .stateChange: return nil
+            }
+        }
+        
+        var stateChange: StateChange? {
+            switch self {
+            case .`operator`: return nil
+            case .stateChange(let stateChange): return stateChange
             }
         }
     }
 }
 
-// MARK: - Operand
+// MARK: - Operator
 // MARK: -
 extension Input {
-    enum Operand: String, Hashable, CustomStringConvertible, Displayable {
+    enum Operator: String, Hashable, CustomStringConvertible, Displayable {
         case plus, minus, equal, multiply, divide, negate, percent
     }
     
@@ -83,7 +97,7 @@ extension Input.StateChange {
     }
 }
 
-extension Input.Operand {
+extension Input.Operator {
     
     var displayValue: String {
         switch self {
@@ -113,5 +127,29 @@ extension Input {
 extension Input.Digit {
     var displayValue: String {
         String(describing: rawValue)
+    }
+}
+
+extension Input {
+    var digit: Digit? {
+        switch self {
+        case .digit(let digit): return digit
+        case .instruction: return nil
+        }
+    }
+    
+    var instruction: Instruction? {
+        switch self {
+        case .digit: return nil
+        case .instruction(let instruction): return instruction
+        }
+    }
+    
+    var `operator`: Operator? {
+        instruction?.operator
+    }
+    
+    var stateChange: StateChange? {
+        instruction?.stateChange
     }
 }
