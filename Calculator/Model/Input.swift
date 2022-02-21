@@ -70,8 +70,22 @@ extension Input {
 // MARK: - Operator
 // MARK: -
 extension Input {
-    enum Operator: String, Hashable, CustomStringConvertible, Displayable {
-        case plus, minus, equal, multiply, divide, negate, percent
+    enum Operator: Hashable, CustomStringConvertible, Displayable {
+        case binaryOperator(BinaryOperator)
+        case unaryOperator(UnaryOperator)
+        
+        /// Equal is a very special operator, because most calculators should
+        /// "cache" the last binary operator (if any) and the last operand (if any)
+        /// and perform the operator several times to the result, using the last
+        /// operand.
+        case equal
+        
+        enum BinaryOperator: String, Hashable, CustomStringConvertible, Displayable {
+            case addition, subtaction, multiplication, division
+        }
+        enum UnaryOperator: String, Hashable, CustomStringConvertible, Displayable {
+            case negation, percent
+        }
     }
     
     enum StateChange: String, Hashable, CustomStringConvertible, Displayable {
@@ -97,17 +111,35 @@ extension Input.StateChange {
     }
 }
 
+extension Input.Operator.BinaryOperator {
+    var displayValue: String {
+        switch self {
+        case .addition: return "+"
+        case .subtaction: return "-"
+        case .multiplication: return "X"
+        case .division: return "/"
+        }
+    }
+}
+
+extension Input.Operator.UnaryOperator {
+    var displayValue: String {
+        switch self {
+        case .percent: return "%"
+        case .negation: return "+/-"
+        }
+    }
+}
+
 extension Input.Operator {
     
     var displayValue: String {
         switch self {
-        case .plus: return "+"
-        case .minus: return "-"
         case .equal: return "="
-        case .multiply: return "X"
-        case .divide: return "/"
-        case .negate: return "+/-"
-        case .percent: return "%"
+        case .binaryOperator(let binaryOperator):
+            return binaryOperator.displayValue
+        case .unaryOperator(let unaryOperator):
+            return unaryOperator.displayValue
         }
     }
     

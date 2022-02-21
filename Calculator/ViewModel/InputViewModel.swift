@@ -38,7 +38,7 @@ extension InputViewModel {
             switch instruction {
             case .operator(let `operator`):
                 switch `operator` {
-                case .negate, .percent: return .gray
+                case .unaryOperator: return .gray
                 default: return Color(.systemOrange)
                 }
             case .stateChange:
