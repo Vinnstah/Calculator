@@ -152,4 +152,8 @@ extension Input {
     var stateChange: StateChange? {
         instruction?.stateChange
     }
+    
+    var isDigit: Bool {
+        digit != nil
+    }
 }

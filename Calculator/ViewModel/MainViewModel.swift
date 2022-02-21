@@ -21,7 +21,7 @@ final class MainViewModel: ObservableObject {
         numberFormatter: NumberFormatter = MainViewModel.defaultNumberFormatter
     ) {
         self.calculator = calculator
-        self.display = calculator.digit?.displayValue ?? ""
+        self.display = "Press a button"
         self.numberFormatter = numberFormatter
     }
 }

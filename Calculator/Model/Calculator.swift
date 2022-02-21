@@ -8,52 +8,82 @@
 import Foundation
 
 final class Calculator: ObservableObject {
-    typealias Operand = Float
-    private var inputs: [Input]
-    private var lastOperand: Operand?
+    typealias Operand = Int // TODO: Change to `Float` and support Float numbers...
+    private var lastOperand: Operand
+    private var digits: [Input.Digit] = []
+    private var lastOperator: Input.Operator? = nil
     
-    init(inputs: [Input] = [.digit(.zero)]) {
-        self.inputs = inputs
+    init(
+        value: Operand = 0,
+        digits: [Input.Digit] = [],
+        lastOperator: Input.Operator? = nil
+    ) {
+        self.lastOperand = value
+        self.digits = digits
+        self.lastOperator = lastOperator
     }
 }
 
 extension Calculator {
-    func reduce() -> Operand {
-        return Operand((inputs.last?.digit ?? .zero).rawValue)
+    func reduce(input: Input) -> Operand {
+        func numberFromCurrentDigits() -> Operand {
+            let numberString = digits.map({ String($0.rawValue) }).joined(separator: "")
+            return Operand(numberString) ?? 0
+        }
+        
+        if let digit = input.digit {
+            self.digits.append(digit)
+        }
+        
+        guard
+            let instruction = input.instruction
+        else {
+            let number = numberFromCurrentDigits()
+            lastOperand = number
+            return number
+        }
+        
+        func todo() -> Operand {
+            print("⚠️ Instruction: '\(instruction)' ignored, not supported.")
+            return numberFromCurrentDigits()
+        }
+        
 
-//        guard
-//            let instruction =  inputs.last?.instruction
-//        else {
-//            return // nothing to do
-//        }
-//
-//        switch instruction {
-//        case .operator(let `operator`):
-////            switch `operator` {
-//                fatalError("")
-////            }
-//        case .stateChange(let stateChange):
-//            switch stateChange {
-//            case .comma:
-//                fatalError("todo")
-//
-//            case .clear:
-//                fatalError("todo")
-//
-//            case .saveNumber:
-//                fatalError("todo")
-//            }
-//        }
+        switch instruction {
+        case .operator(let `operator`):
+            switch `operator` {
+            case .equal:
+                return todo()
+            case .plus:
+                return todo()
+            case .minus:
+                return todo()
+            case .divide:
+                return todo()
+            case .multiply:
+                return todo()
+            case .negate:
+                return todo()
+            case .percent:
+                return todo()
+            }
+        case .stateChange(let stateChange):
+            switch stateChange {
+            case .comma:
+                return todo()
+            case .clear:
+                return todo()
+            case .saveNumber:
+                return todo()
+            }
+        }
+        
     }
 }
 
 extension Calculator {
-    var digit: Input.Digit? {
-        inputs.last?.digit
-    }
     
     func input(_ input: Input) -> Operand {
-        inputs.append(input)
-        return reduce()
+        reduce(input: input)
     }
 }
