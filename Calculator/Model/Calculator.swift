@@ -37,7 +37,7 @@ extension Calculator {
     }
 }
 
-extension Calculator {
+private extension Calculator {
     func reduce(input: Input) -> Operand {
         func numberFromCurrentDigits() -> Operand {
             let numberString = digits.map({ String($0.rawValue) }).joined(separator: "")
@@ -92,7 +92,11 @@ extension Calculator {
 }
 
 private extension Input.Operator.BinaryOperator {
-    func calculate(_ lhs: Calculator.Operand, _ rhs: Calculator.Operand) -> Calculator.Operand {
+    
+    func calculate(
+        _ lhs: Calculator.Operand,
+        _ rhs: Calculator.Operand
+    ) -> Calculator.Operand {
         switch self {
         case .addition:
             return lhs + rhs
@@ -119,15 +123,23 @@ extension Calculator {
 extension Calculator {
     
     /// Do not call from production code, only from XCTest
+    var _value: Operand {
+        precondition(isRunningUnitTest())
+        return value
+    }
+    
+    /// Do not call from production code, only from XCTest
     var _lastOperand: Operand {
         precondition(isRunningUnitTest())
         return lastOperand
     }
+    
     /// Do not call from production code, only from XCTest
     var _digits: [Input.Digit] {
         precondition(isRunningUnitTest())
         return digits
     }
+    
     /// Do not call from production code, only from XCTest
     var _lastBinaryOperator: Input.Operator.BinaryOperator? {
         precondition(isRunningUnitTest())

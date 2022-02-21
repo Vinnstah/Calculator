@@ -2,8 +2,12 @@ import XCTest
 @testable import Calculator
 
 final class CalculatorTests: XCTestCase {
-    func testEquals() {
-        let calculator = Calculator._withState(value: 3, lastBinaryOperator: .addition)
+
+    func test_instruction_equals_add3() {
+        let calculator = Calculator._withState(
+            value: 3,
+            lastBinaryOperator: .addition
+        )
        
         func assertInternalState() {
              XCTAssertEqual(calculator._lastOperand, 3)
@@ -31,6 +35,118 @@ final class CalculatorTests: XCTestCase {
             calculator.input(.instruction(.operator(.equal))),
             12
         )
+        
+        
+        XCTAssertEqual(calculator._value, 12)
+    }
+    
+    func test_instruction_equals_sub2() {
+        let calculator = Calculator._withState(
+            value: 15,
+            lastOperand: 5,
+            lastBinaryOperator: .subtaction
+        )
+       
+        func assertInternalState() {
+             XCTAssertEqual(calculator._lastOperand, 5)
+             XCTAssertEqual(calculator._lastBinaryOperator, .subtaction)
+             XCTAssertTrue(calculator._digits.isEmpty)
+        }
+        
+        assertInternalState()
+        XCTAssertEqual(
+            calculator.input(.instruction(.operator(.equal))),
+            10
+        )
+        
+        assertInternalState()
+        XCTAssertEqual(
+            calculator.input(.instruction(.operator(.equal))),
+            5
+        )
+        
+        assertInternalState()
+        XCTAssertEqual(
+            calculator.input(.instruction(.operator(.equal))),
+            0
+        )
+        
+        assertInternalState()
+        XCTAssertEqual(
+            calculator.input(.instruction(.operator(.equal))),
+            -5
+        )
+        
+        XCTAssertEqual(calculator._value, -5)
+    }
+    
+    func test_instruction_equals_mul2() {
+        let calculator = Calculator._withState(
+            value: 2,
+            lastBinaryOperator: .multiplication
+        )
+       
+        func assertInternalState() {
+             XCTAssertEqual(calculator._lastOperand, 2)
+             XCTAssertEqual(calculator._lastBinaryOperator, .multiplication)
+             XCTAssertTrue(calculator._digits.isEmpty)
+        }
+        
+        assertInternalState()
+        XCTAssertEqual(
+            calculator.input(.instruction(.operator(.equal))),
+            4
+        )
+        
+        assertInternalState()
+        XCTAssertEqual(
+            calculator.input(.instruction(.operator(.equal))),
+            8
+        )
+        
+        assertInternalState()
+        XCTAssertEqual(
+            calculator.input(.instruction(.operator(.equal))),
+            16
+        )
+        
+        
+        XCTAssertEqual(calculator._value, 16)
+    }
+    
+    func test_instruction_equals_div2() {
+        let calculator = Calculator._withState(
+            value: 512,
+            lastOperand: 2,
+            lastBinaryOperator: .division
+        )
+       
+        func assertInternalState() {
+             XCTAssertEqual(calculator._lastOperand, 2)
+             XCTAssertEqual(calculator._lastBinaryOperator, .division)
+             XCTAssertTrue(calculator._digits.isEmpty)
+        }
+        
+        assertInternalState()
+        XCTAssertEqual(
+            calculator.input(.instruction(.operator(.equal))),
+            256
+        )
+        
+        assertInternalState()
+        XCTAssertEqual(
+            calculator.input(.instruction(.operator(.equal))),
+            128
+        )
+        
+        assertInternalState()
+        XCTAssertEqual(
+            calculator.input(.instruction(.operator(.equal))),
+            64
+        )
+        
+        
+        XCTAssertEqual(calculator._value, 64)
     }
 }
 
