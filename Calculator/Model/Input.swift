@@ -17,6 +17,7 @@ extension Displayable where Self: RawRepresentable, RawValue == String {
         rawValue
     }
 }
+
 extension CustomStringConvertible where Self: Displayable {
     var description: String {
         displayValue
@@ -114,21 +115,3 @@ extension Input.Digit {
         String(describing: rawValue)
     }
 }
-
-/// Would it be better to implement backgroundCOlor here instead of in the ButtonsArray? If so, how to get it working correctly? Add it to protocol?
-
-//extension Input {
-//    enum Colour {
-//        case digit(Digit)
-//        case operand(Operand)
-//        case stateChange(StateChange)
-//
-//
-//        var backgroundColor: Color {
-//            switch self {
-//            case .digit(let backgroundColor): return Color(.lightGray)
-//            case .operand(let backgroundColor): return Color(.gray)
-//            case .stateChange(let backgroundColor): return Color(.systemOrange)
-//            }
-//        }}
-//}

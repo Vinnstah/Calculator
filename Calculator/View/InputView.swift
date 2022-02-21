@@ -12,10 +12,12 @@ struct InputView: View {
     var body: some View {
         VStack{
             Spacer()
-            ZStack {
-                Rectangle().fill(Color.gray).frame(width: UIScreen.main.bounds.width, height: 40)
+            HStack {
+                Spacer()
                 Text(viewModel.display)
                     .foregroundColor(.white)
+                    .font(.system(size: 60))
+                    .padding()
             }
         }
     }

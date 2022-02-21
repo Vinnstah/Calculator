@@ -11,6 +11,7 @@ final class InputGridViewModel: ObservableObject {
     @Published var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 4)
     @Published var buttons: [Input] = ButtonsArray().buttons
     @Published var display: String = ""
+//    @Published var isSelected: Bool = false
     
 //    init() {
 //        self.columns = Array(repeating: .init(.flexible()), count: 4)
@@ -31,20 +32,21 @@ struct GridViewModel: View {
                         viewModel.display += button.displayValue
                     } label: {
                         ZStack {
-                            Rectangle().fill(ButtonsArray().returnBackgroundColor(input: button))
-                                .cornerRadius(20)
+                            
+                            Circle().fill(ButtonsArray().returnBackgroundColor(input: button))
                                 .frame(width: geo.size.width / 4, height: geo.size.height / 5)
+                            
                             Text(button.displayValue)
                                 .foregroundColor(.white)
+                                .font(.system(size: 26).bold()
+                                )
                         }
                     }
                 }
-            }
-        }.frame(height: UIScreen.main.bounds.height / 3)
-        
+            }.frame(width: geo.size.width,
+                    height: geo.size.height / 3,
+                    alignment: .top)
+                
+        }.padding(.bottom)
     }
 }
-
-
-
-

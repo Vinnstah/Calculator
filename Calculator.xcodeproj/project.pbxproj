@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E55EF4E827C14704000C59E6 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55EF4E727C14704000C59E6 /* Input.swift */; };
 		E599F47827BB067000314B25 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E599F47727BB067000314B25 /* MainView.swift */; };
+		E5B0278827C363C7009CB58F /* ButtonsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B0278727C363C7009CB58F /* ButtonsViewModel.swift */; };
 		E5E1894027BB058B00478AA1 /* CalculatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E1893F27BB058B00478AA1 /* CalculatorApp.swift */; };
 		E5E1894427BB058D00478AA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5E1894327BB058D00478AA1 /* Assets.xcassets */; };
 		E5E1894727BB058D00478AA1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5E1894627BB058D00478AA1 /* Preview Assets.xcassets */; };
@@ -41,6 +42,7 @@
 /* Begin PBXFileReference section */
 		E55EF4E727C14704000C59E6 /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
 		E599F47727BB067000314B25 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		E5B0278727C363C7009CB58F /* ButtonsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsViewModel.swift; sourceTree = "<group>"; };
 		E5E1893C27BB058B00478AA1 /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5E1893F27BB058B00478AA1 /* CalculatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorApp.swift; sourceTree = "<group>"; };
 		E5E1894327BB058D00478AA1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				E5E6B79C27C2DCA700896DED /* InputGridViewModel.swift */,
+				E5B0278727C363C7009CB58F /* ButtonsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 				E5E6B79D27C2DCA700896DED /* InputGridViewModel.swift in Sources */,
 				E5E6B79F27C2DD3800896DED /* InputView.swift in Sources */,
 				E5E6B7A327C2F9BE00896DED /* ButtonsArray.swift in Sources */,
+				E5B0278827C363C7009CB58F /* ButtonsViewModel.swift in Sources */,
 				E599F47827BB067000314B25 /* MainView.swift in Sources */,
 				E5E6B7A127C2DE6300896DED /* GridView.swift in Sources */,
 				E5E1894027BB058B00478AA1 /* CalculatorApp.swift in Sources */,

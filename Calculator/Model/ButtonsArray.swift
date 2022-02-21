@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 struct ButtonsArray {
+    
     let buttons: [Input] =
     [
         Input.instruction(.stateChange(.clear)),
@@ -34,15 +35,3 @@ struct ButtonsArray {
     ]
     }
 
-extension ButtonsArray {
-    
-    /// How do I return .systemOrange for Operands?
-    func returnBackgroundColor(input: Input) -> Color {
-        switch input {
-        case .digit: return Color(.lightGray)
-        case .instruction: return Color(.gray)
-//        case .Operand(let backgroundColor): return Color(.systemOrange)
-        }
-        
-    }
-}
