@@ -13,14 +13,23 @@ struct GridView: View {
     var body: some View {
         VStack {
             Spacer()
-            GridViewModel(viewModel: viewModel)
-                .padding(.horizontal)
+            GeometryReader { geo in
+                LazyVGrid(columns: viewModel.columns, spacing: 5) {
+                    ForEach(viewModel.elements, id: \.self) { input in
+                        
+                        InputView(viewModel: viewModel).inputViewButton(input: input, geo: geo)
+                    }
+                }.frame(width: geo.size.width,
+                        height: geo.size.height / 3,
+                        alignment: .top)
+                
+            }.padding()
         }
     }
 }
 
-struct GridView_Previews: PreviewProvider {
-    static var previews: some View {
-        GridView(viewModel: InputGridViewModel())
-    }
-}
+//struct GridView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        GridView(viewModel: InputGridViewModel(columns: [GridItem], elements: [Input], display: String))
+//    }
+//}

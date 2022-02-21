@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E55EF4E827C14704000C59E6 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55EF4E727C14704000C59E6 /* Input.swift */; };
+		E58E7C1027C3A5B6007FD817 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58E7C0F27C3A5B6007FD817 /* InputView.swift */; };
 		E599F47827BB067000314B25 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E599F47727BB067000314B25 /* MainView.swift */; };
 		E5B0278827C363C7009CB58F /* ButtonsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B0278727C363C7009CB58F /* ButtonsViewModel.swift */; };
 		E5E1894027BB058B00478AA1 /* CalculatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E1893F27BB058B00478AA1 /* CalculatorApp.swift */; };
@@ -17,9 +18,9 @@
 		E5E1895B27BB058D00478AA1 /* CalculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E1895A27BB058D00478AA1 /* CalculatorUITests.swift */; };
 		E5E1895D27BB058D00478AA1 /* CalculatorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E1895C27BB058D00478AA1 /* CalculatorUITestsLaunchTests.swift */; };
 		E5E6B79D27C2DCA700896DED /* InputGridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E6B79C27C2DCA700896DED /* InputGridViewModel.swift */; };
-		E5E6B79F27C2DD3800896DED /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E6B79E27C2DD3800896DED /* InputView.swift */; };
+		E5E6B79F27C2DD3800896DED /* DisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E6B79E27C2DD3800896DED /* DisplayView.swift */; };
 		E5E6B7A127C2DE6300896DED /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E6B7A027C2DE6300896DED /* GridView.swift */; };
-		E5E6B7A327C2F9BE00896DED /* ButtonsArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E6B7A227C2F9BE00896DED /* ButtonsArray.swift */; };
+		E5E6B7A327C2F9BE00896DED /* InputArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E6B7A227C2F9BE00896DED /* InputArray.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		E55EF4E727C14704000C59E6 /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
+		E58E7C0F27C3A5B6007FD817 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		E599F47727BB067000314B25 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		E5B0278727C363C7009CB58F /* ButtonsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsViewModel.swift; sourceTree = "<group>"; };
 		E5E1893C27BB058B00478AA1 /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,9 +55,9 @@
 		E5E1895A27BB058D00478AA1 /* CalculatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorUITests.swift; sourceTree = "<group>"; };
 		E5E1895C27BB058D00478AA1 /* CalculatorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E5E6B79C27C2DCA700896DED /* InputGridViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputGridViewModel.swift; sourceTree = "<group>"; };
-		E5E6B79E27C2DD3800896DED /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
+		E5E6B79E27C2DD3800896DED /* DisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayView.swift; sourceTree = "<group>"; };
 		E5E6B7A027C2DE6300896DED /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
-		E5E6B7A227C2F9BE00896DED /* ButtonsArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsArray.swift; sourceTree = "<group>"; };
+		E5E6B7A227C2F9BE00896DED /* InputArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputArray.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,7 +89,8 @@
 			isa = PBXGroup;
 			children = (
 				E599F47727BB067000314B25 /* MainView.swift */,
-				E5E6B79E27C2DD3800896DED /* InputView.swift */,
+				E58E7C0F27C3A5B6007FD817 /* InputView.swift */,
+				E5E6B79E27C2DD3800896DED /* DisplayView.swift */,
 				E5E6B7A027C2DE6300896DED /* GridView.swift */,
 			);
 			path = View;
@@ -106,7 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				E55EF4E727C14704000C59E6 /* Input.swift */,
-				E5E6B7A227C2F9BE00896DED /* ButtonsArray.swift */,
+				E5E6B7A227C2F9BE00896DED /* InputArray.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -301,10 +304,11 @@
 			files = (
 				E55EF4E827C14704000C59E6 /* Input.swift in Sources */,
 				E5E6B79D27C2DCA700896DED /* InputGridViewModel.swift in Sources */,
-				E5E6B79F27C2DD3800896DED /* InputView.swift in Sources */,
-				E5E6B7A327C2F9BE00896DED /* ButtonsArray.swift in Sources */,
+				E5E6B79F27C2DD3800896DED /* DisplayView.swift in Sources */,
+				E5E6B7A327C2F9BE00896DED /* InputArray.swift in Sources */,
 				E5B0278827C363C7009CB58F /* ButtonsViewModel.swift in Sources */,
 				E599F47827BB067000314B25 /* MainView.swift in Sources */,
+				E58E7C1027C3A5B6007FD817 /* InputView.swift in Sources */,
 				E5E6B7A127C2DE6300896DED /* GridView.swift in Sources */,
 				E5E1894027BB058B00478AA1 /* CalculatorApp.swift in Sources */,
 			);

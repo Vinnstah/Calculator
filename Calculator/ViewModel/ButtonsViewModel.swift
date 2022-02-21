@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-extension ButtonsArray {
+extension InputArray {
     
     func returnBackgroundColor(input: Input) -> Color {
         switch input {

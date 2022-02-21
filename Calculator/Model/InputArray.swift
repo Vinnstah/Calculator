@@ -8,9 +8,9 @@
 import Foundation
 import SwiftUI
 
-struct ButtonsArray {
+struct InputArray {
     
-    let buttons: [Input] =
+    let elements: [Input] =
     [
         Input.instruction(.stateChange(.clear)),
         Input.instruction(.operand(.negate)),
