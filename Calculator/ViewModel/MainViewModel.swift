@@ -10,6 +10,9 @@ import SwiftUI
 final class MainViewModel: ObservableObject {
     @Published var display: String
     @ObservedObject var calculator: Calculator
+    lazy var gridViewModel: GridViewModel = {
+        .init(onPress: onPress)
+    }()
    
     private let numberFormatter: NumberFormatter
     

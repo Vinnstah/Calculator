@@ -7,20 +7,6 @@
 
 import SwiftUI
 
-
-struct ForceFullScreen<Content>: View where Content: View {
-    @ViewBuilder let content: () -> Content
-
-    var body: some View {
-        ZStack {
-            Color.black.edgesIgnoringSafeArea(.all)
-            content().padding()
-        }
-    }
-}
-
-
-
 struct MainView: View {
     @ObservedObject var viewModel: MainViewModel
 }
@@ -50,7 +36,7 @@ private extension MainView {
     
     @ViewBuilder
     var inputs: some View {
-        GridView(viewModel: .init(onPress: viewModel.onPress))
+        GridView(viewModel: viewModel.gridViewModel)
             .padding()
     }
 }
