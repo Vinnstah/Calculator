@@ -37,43 +37,68 @@ extension Calculator {
     }
 }
 
+
+
 private extension Calculator {
-    func reduce(input: Input) -> Operand {
-        func numberFromCurrentDigits() -> Operand {
-            let numberString = digits.map({ String($0.rawValue) }).joined(separator: "")
-            return Operand(numberString) ?? 0
+    
+    func operandFromDigits(alsoClearDigits: Bool = false) -> Operand {
+        defer {
+            if alsoClearDigits {
+                digits = []
+            }
         }
+        let numberString = digits.map({ String($0.rawValue) }).joined(separator: "")
+        return Operand(numberString) ?? 0
+    }
+    
+    func reduce(input: Input) -> Operand {
+        
         
         if let digit = input.digit {
-            self.digits.append(digit)
+            digits.append(digit)
         }
         
         guard
             let instruction = input.instruction
         else {
-            let number = numberFromCurrentDigits()
-            lastOperand = number
-            return number
+            //Input was a digit but we do not know yet if we have finished inputting this operand
+            return operandFromDigits()
+            
+        }
+        
+        let newOperand = operandFromDigits(alsoClearDigits: true) // We know that we finished inputting wanted operand, prepare for entering a new operand
+        defer {
+            lastOperand = newOperand
         }
         
         func todo() -> Operand {
             print("⚠️ Instruction: '\(instruction)' ignored, not supported.")
-            return numberFromCurrentDigits()
+            return operandFromDigits()
         }
         
-
+        func updateValueWithResultOfLastBinaryOperator(with lhs: Operand, and rhs: Operand) -> Operand {
+            guard let lastBinaryOperator = lastBinaryOperator else {
+                return newOperand
+            }
+            value = lastBinaryOperator.calculate(lhs, rhs)
+            return value
+            
+        }
+        
+        
         switch instruction {
         case .operator(let `operator`):
             switch `operator` {
             case .equal:
-                if let lastBinaryOperator = lastBinaryOperator {
-                    let result = lastBinaryOperator.calculate(value, lastOperand)
-                    value = result
-                    return result
-                }
-                return todo()
+
+                return updateValueWithResultOfLastBinaryOperator(with: value, and: lastOperand)
+                
             case .binaryOperator(let binaryOperator):
-                return todo()
+                defer {
+                    lastBinaryOperator = binaryOperator
+                }
+                return updateValueWithResultOfLastBinaryOperator(with: lastOperand, and: newOperand)
+    
             case .unaryOperator(let unaryOperator):
                 return todo()
             }
