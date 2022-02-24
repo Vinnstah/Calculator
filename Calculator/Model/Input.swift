@@ -80,10 +80,10 @@ extension Input {
         /// operand.
         case equal
         
-        enum BinaryOperator: String, Hashable, CustomStringConvertible, Displayable {
+        enum BinaryOperator: String, CaseIterable, Hashable, CustomStringConvertible, Displayable {
             case addition, subtaction, multiplication, division
         }
-        enum UnaryOperator: String, Hashable, CustomStringConvertible, Displayable {
+        enum UnaryOperator: String, CaseIterable, Hashable, CustomStringConvertible, Displayable {
             case negation, percent
         }
     }

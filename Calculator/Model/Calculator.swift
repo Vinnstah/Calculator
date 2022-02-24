@@ -67,9 +67,7 @@ private extension Calculator {
         }
         
         let newOperand = operandFromDigits(alsoClearDigits: true) // We know that we finished inputting wanted operand, prepare for entering a new operand
-        defer {
-            lastOperand = newOperand
-        }
+
         
         func todo() -> Operand {
             print("⚠️ Instruction: '\(instruction)' ignored, not supported.")
@@ -78,9 +76,11 @@ private extension Calculator {
         
         func updateValueWithResultOfLastBinaryOperator(with lhs: Operand, and rhs: Operand) -> Operand {
             guard let lastBinaryOperator = lastBinaryOperator else {
+                lastOperand = newOperand
                 return newOperand
             }
             value = lastBinaryOperator.calculate(lhs, rhs)
+            lastOperand = value
             return value
             
         }
@@ -137,7 +137,7 @@ private extension Input.Operator.BinaryOperator {
 }
 
 extension Calculator {
-    
+    @discardableResult
     func input(_ input: Input) -> Operand {
         reduce(input: input)
     }

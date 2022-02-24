@@ -40,6 +40,17 @@ final class CalculatorTests: XCTestCase {
         XCTAssertEqual(calculator._value, 12)
     }
     
+    func test_addition() {
+        let calculator = Calculator()
+        calculator.input(2)
+        calculator.input("+")
+        calculator.input(3)
+        calculator.input("+")
+        XCTAssertEqual(calculator._value, 5)
+        
+        
+    }
+    
     func test_instruction_equals_sub2() {
         let calculator = Calculator._withState(
             value: 15,
@@ -157,8 +168,27 @@ extension Input: ExpressibleByIntegerLiteral {
         self = .digit(Digit(integerLiteral: value))
     }
 }
+
+extension Input: ExpressibleByStringLiteral {
+    public init(stringLiteral value: Input.Operator.BinaryOperator.RawValue) {
+        let banan: Input.Operator.BinaryOperator = .init(stringLiteral: value)
+        let apa: Input.Operator = .binaryOperator(banan)
+        self = .instruction(.operator(apa))
+    }
+}
+
+extension Input.Operator.BinaryOperator: ExpressibleByStringLiteral {
+    public init(stringLiteral value: RawValue) {
+        guard let binaryOperator = Self.allCases.first(where: { $0.displayValue == value }) else {
+            fatalError("Unrecognized operator value \(value)")
+        }
+        self = binaryOperator
+    }
+}
+
 extension Input.Digit: ExpressibleByIntegerLiteral {
     public init(integerLiteral value: RawValue) {
         self.init(rawValue: value)!
     }
 }
+
