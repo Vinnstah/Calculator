@@ -14,17 +14,21 @@ final class Calculator: ObservableObject {
     private var digits: [Input.Digit] = []
     private var lastBinaryOperator: Input.Operator.BinaryOperator? = nil
     private var value: Operand
+//    private var newOperand: Operand
     
     private init(
         value: Operand = 0,
         digits: [Input.Digit] = [],
         lastOperand: Operand? = nil,
         lastBinaryOperator: Input.Operator.BinaryOperator? = nil
+//        ,
+//        newOperand: Operand? = nil
     ) {
         self.value = value
         self.lastOperand = lastOperand ?? value
         self.digits = digits
         self.lastBinaryOperator = lastBinaryOperator
+//        self.newOperand = newOperand ?? 0
     }
     
 }
@@ -66,7 +70,7 @@ private extension Calculator {
             
         }
         
-        let newOperand = operandFromDigits(alsoClearDigits: true) // We know that we finished inputting wanted operand, prepare for entering a new operand
+        var newOperand = operandFromDigits(alsoClearDigits: true) // We know that we finished inputting wanted operand, prepare for entering a new operand
 
         
         func todo() -> Operand {
@@ -91,7 +95,7 @@ private extension Calculator {
             switch `operator` {
             case .equal:
 
-                return updateValueWithResultOfLastBinaryOperator(with: value, and: lastOperand)
+                return updateValueWithResultOfLastBinaryOperator(with: lastOperand, and: newOperand)
                 
             case .binaryOperator(let binaryOperator):
                 defer {
@@ -107,7 +111,11 @@ private extension Calculator {
             case .comma:
                 return todo()
             case .clear:
-                return todo()
+                value = 0
+                newOperand = 0
+                lastOperand = 0
+                digits = []
+                return 0
             case .saveNumber:
                 return todo()
             }
@@ -165,6 +173,11 @@ extension Calculator {
         return digits
     }
     
+//    var _newOperand: Operand? {
+//        precondition(isRunningUnitTest())
+//        return newOperand
+//    }
+    
     /// Do not call from production code, only from XCTest
     var _lastBinaryOperator: Input.Operator.BinaryOperator? {
         precondition(isRunningUnitTest())
@@ -177,6 +190,8 @@ extension Calculator {
         digits: [Input.Digit] = [],
         lastOperand: Operand? = nil,
         lastBinaryOperator: Input.Operator.BinaryOperator? = nil
+//        ,
+//        newOperand: Operand? = nil
     ) -> Calculator {
         precondition(isRunningUnitTest())
         return .init(
@@ -184,6 +199,8 @@ extension Calculator {
             digits: digits,
             lastOperand: lastOperand,
             lastBinaryOperator: lastBinaryOperator
+//            ,
+//            newOperand: newOperand
         )
     }
 }
