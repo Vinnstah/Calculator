@@ -15,7 +15,7 @@ final class Calculator: ObservableObject {
     private var lastBinaryOperator: Input.Operator.BinaryOperator? = nil
     private var value: Operand
     private var operandSavedToMemory: Operand?
-//    private var newOperand: Operand
+    //    private var newOperand: Operand
     
     private init(
         value: Operand = 0,
@@ -23,15 +23,15 @@ final class Calculator: ObservableObject {
         lastOperand: Operand? = nil,
         lastBinaryOperator: Input.Operator.BinaryOperator? = nil,
         operandSavedToMemory: Operand? = nil
-//        ,
-//        newOperand: Operand? = nil
+        //        ,
+        //        newOperand: Operand? = nil
     ) {
         self.value = value
         self.lastOperand = lastOperand ?? value
         self.digits = digits
         self.lastBinaryOperator = lastBinaryOperator
         self.operandSavedToMemory = operandSavedToMemory ?? value
-//        self.newOperand = newOperand ?? 0
+        //        self.newOperand = newOperand ?? 0
     }
     
 }
@@ -74,7 +74,7 @@ private extension Calculator {
         }
         
         var newOperand = operandFromDigits(alsoClearDigits: true) // We know that we finished inputting wanted operand, prepare for entering a new operand
-
+        
         
         func todo() -> Operand {
             print("⚠️ Instruction: '\(instruction)' ignored, not supported.")
@@ -97,7 +97,7 @@ private extension Calculator {
         case .operator(let `operator`):
             switch `operator` {
             case .equal:
-
+                
                 return updateValueWithResultOfLastBinaryOperator(with: lastOperand, and: newOperand)
                 
             case .binaryOperator(let binaryOperator):
@@ -105,8 +105,26 @@ private extension Calculator {
                     lastBinaryOperator = binaryOperator
                 }
                 return updateValueWithResultOfLastBinaryOperator(with: lastOperand, and: newOperand)
-    
+                
             case .unaryOperator(let unaryOperator):
+                switch unaryOperator {
+                    //Negation not currently functional. Returns the optional default
+                case .negation:
+                    if operandFromDigits() < 0 {
+
+                        let numberString = digits.map({ String($0.rawValue) }).joined(separator: "")
+                        value = abs(Operand(numberString) ?? 2)
+                        return value
+                    } else {
+                      let numberString = digits.map({ String($0.rawValue) }).joined(separator: "")
+                        value = Operand(numberString) ?? 0
+                        value = -value
+                        return value
+                        
+                    }
+                default: return todo()
+                }
+                
                 return todo()
             }
         case .stateChange(let stateChange):
@@ -123,7 +141,7 @@ private extension Calculator {
                 //Implement function/button to remove operand from memory. Highlight button if there currently is a operand saved to memory
                 guard operandSavedToMemory != 0 else {
                     operandSavedToMemory = value
-                    print("No operand currently in memory, adding operand to momery: \(String(describing: operandSavedToMemory))")
+                    print("No operand currently in memory, adding operand to memory: \(String(describing: operandSavedToMemory))")
                     return value
                 }
                 print("Operand currently in memory: \(String(describing: operandSavedToMemory))")
@@ -183,10 +201,10 @@ extension Calculator {
         return digits
     }
     
-//    var _newOperand: Operand? {
-//        precondition(isRunningUnitTest())
-//        return newOperand
-//    }
+    //    var _newOperand: Operand? {
+    //        precondition(isRunningUnitTest())
+    //        return newOperand
+    //    }
     
     /// Do not call from production code, only from XCTest
     var _lastBinaryOperator: Input.Operator.BinaryOperator? {
@@ -200,8 +218,8 @@ extension Calculator {
         digits: [Input.Digit] = [],
         lastOperand: Operand? = nil,
         lastBinaryOperator: Input.Operator.BinaryOperator? = nil
-//        ,
-//        newOperand: Operand? = nil
+        //        ,
+        //        newOperand: Operand? = nil
     ) -> Calculator {
         precondition(isRunningUnitTest())
         return .init(
@@ -209,8 +227,8 @@ extension Calculator {
             digits: digits,
             lastOperand: lastOperand,
             lastBinaryOperator: lastBinaryOperator
-//            ,
-//            newOperand: newOperand
+            //            ,
+            //            newOperand: newOperand
         )
     }
 }
