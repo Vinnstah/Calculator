@@ -6,12 +6,13 @@ final class CalculatorTests: XCTestCase {
     func test_instruction_equals_add3() {
         let calculator = Calculator._withState(
             value: 3,
-            lastBinaryOperator: .addition,
-            newOperand: 3
+            lastBinaryOperator: .addition
+//            ,
+//            newOperand: 3
         )
        
         func assertInternalState() {
-             XCTAssertEqual(calculator._lastOperand, 3)
+//             XCTAssertEqual(calculator._lastOperand, 3)
 //             XCTAssertEqual(calculator._lastBinaryOperator, .addition)
 //             XCTAssertTrue(calculator._digits.isEmpty)
         }

@@ -14,13 +14,15 @@ final class Calculator: ObservableObject {
     private var digits: [Input.Digit] = []
     private var lastBinaryOperator: Input.Operator.BinaryOperator? = nil
     private var value: Operand
+    private var operandSavedToMemory: Operand?
 //    private var newOperand: Operand
     
     private init(
         value: Operand = 0,
         digits: [Input.Digit] = [],
         lastOperand: Operand? = nil,
-        lastBinaryOperator: Input.Operator.BinaryOperator? = nil
+        lastBinaryOperator: Input.Operator.BinaryOperator? = nil,
+        operandSavedToMemory: Operand? = nil
 //        ,
 //        newOperand: Operand? = nil
     ) {
@@ -28,6 +30,7 @@ final class Calculator: ObservableObject {
         self.lastOperand = lastOperand ?? value
         self.digits = digits
         self.lastBinaryOperator = lastBinaryOperator
+        self.operandSavedToMemory = operandSavedToMemory ?? value
 //        self.newOperand = newOperand ?? 0
     }
     
@@ -117,6 +120,13 @@ private extension Calculator {
                 digits = []
                 return 0
             case .saveNumber:
+                //Implement function/button to remove operand from memory. Highlight button if there currently is a operand saved to memory
+                guard operandSavedToMemory != 0 else {
+                    operandSavedToMemory = value
+                    print("No operand currently in memory, adding operand to momery: \(String(describing: operandSavedToMemory))")
+                    return value
+                }
+                print("Operand currently in memory: \(String(describing: operandSavedToMemory))")
                 return todo()
             }
         }
