@@ -14,17 +14,24 @@ final class Calculator: ObservableObject {
     private var digits: [Input.Digit] = []
     private var lastBinaryOperator: Input.Operator.BinaryOperator? = nil
     private var value: Operand
+    private var operandSavedToMemory: Operand?
+    private var newOperand: Operand?
     
     private init(
         value: Operand = 0,
         digits: [Input.Digit] = [],
         lastOperand: Operand? = nil,
-        lastBinaryOperator: Input.Operator.BinaryOperator? = nil
+        lastBinaryOperator: Input.Operator.BinaryOperator? = nil,
+        operandSavedToMemory: Operand? = nil,
+        newOperand: Operand? = nil
+
     ) {
         self.value = value
         self.lastOperand = lastOperand ?? value
         self.digits = digits
         self.lastBinaryOperator = lastBinaryOperator
+        self.operandSavedToMemory = operandSavedToMemory ?? value
+        self.newOperand = newOperand ?? 0
     }
     
 }
@@ -37,44 +44,92 @@ extension Calculator {
     }
 }
 
+
+
 private extension Calculator {
-    func reduce(input: Input) -> Operand {
-        func numberFromCurrentDigits() -> Operand {
-            let numberString = digits.map({ String($0.rawValue) }).joined(separator: "")
-            return Operand(numberString) ?? 0
+    
+    func operandFromDigits(alsoClearDigits: Bool = false) -> Operand {
+        defer {
+            if alsoClearDigits {
+                digits = []
+            }
         }
+        let numberString = digits.map({ String($0.rawValue) }).joined(separator: "")
+        return Operand(numberString) ?? 0
+    }
+    
+    func reduce(input: Input) -> Operand {
+        
         
         if let digit = input.digit {
-            self.digits.append(digit)
+            digits.append(digit)
         }
         
         guard
             let instruction = input.instruction
         else {
-            let number = numberFromCurrentDigits()
-            lastOperand = number
-            return number
+            //Input was a digit but we do not know yet if we have finished inputting this operand
+            return operandFromDigits()
+            
         }
+        
+        newOperand = operandFromDigits(alsoClearDigits: true) // We know that we finished inputting wanted operand, prepare for entering a new operand
+        
         
         func todo() -> Operand {
             print("⚠️ Instruction: '\(instruction)' ignored, not supported.")
-            return numberFromCurrentDigits()
+            return operandFromDigits()
         }
         
-
+        func updateValueWithResultOfLastBinaryOperator(with lhs: Operand, and rhs: Operand) -> Operand {
+            
+            guard let lastBinaryOperator = lastBinaryOperator else {
+                
+                lastOperand = newOperand!
+                return newOperand!
+            }
+            value = lastBinaryOperator.calculate(lhs, rhs)
+            lastOperand = value
+            return value
+            
+        }
+        
+        
         switch instruction {
         case .operator(let `operator`):
             switch `operator` {
             case .equal:
-                if let lastBinaryOperator = lastBinaryOperator {
-                    let result = lastBinaryOperator.calculate(value, lastOperand)
-                    value = result
-                    return result
-                }
-                return todo()
+
+                lastOperand = updateValueWithResultOfLastBinaryOperator(with: lastOperand, and: newOperand!)
+                return lastOperand
+                
             case .binaryOperator(let binaryOperator):
-                return todo()
+
+                    defer {
+                        lastBinaryOperator = binaryOperator
+                    }
+                        
+                return updateValueWithResultOfLastBinaryOperator(with: lastOperand, and: newOperand!)
+                
             case .unaryOperator(let unaryOperator):
+                switch unaryOperator {
+                    //Negation not currently functional. Returns the optional default
+                case .negation:
+                    if operandFromDigits() < 0 {
+                        
+                        let numberString = digits.map({ String($0.rawValue) }).joined(separator: "")
+                        value = abs(Operand(numberString) ?? 2)
+                        return value
+                    } else {
+                        let numberString = digits.map({ String($0.rawValue) }).joined(separator: "")
+                        value = Operand(numberString) ?? 0
+                        value = -value
+                        return value
+                        
+                    }
+                default: return todo()
+                }
+                
                 return todo()
             }
         case .stateChange(let stateChange):
@@ -82,8 +137,20 @@ private extension Calculator {
             case .comma:
                 return todo()
             case .clear:
-                return todo()
+                value = 0
+                newOperand = 0
+                lastOperand = .init()
+                lastBinaryOperator = nil
+                digits = []
+                return 0
             case .saveNumber:
+                //Implement function/button to remove operand from memory. Highlight button if there currently is a operand saved to memory
+                guard operandSavedToMemory != 0 else {
+                    operandSavedToMemory = value
+                    print("No operand currently in memory, adding operand to memory: \(String(describing: operandSavedToMemory))")
+                    return value
+                }
+                print("Operand currently in memory: \(String(describing: operandSavedToMemory))")
                 return todo()
             }
         }
@@ -112,7 +179,7 @@ private extension Input.Operator.BinaryOperator {
 }
 
 extension Calculator {
-    
+    @discardableResult
     func input(_ input: Input) -> Operand {
         reduce(input: input)
     }
@@ -140,6 +207,11 @@ extension Calculator {
         return digits
     }
     
+    //    var _newOperand: Operand? {
+    //        precondition(isRunningUnitTest())
+    //        return newOperand
+    //    }
+    
     /// Do not call from production code, only from XCTest
     var _lastBinaryOperator: Input.Operator.BinaryOperator? {
         precondition(isRunningUnitTest())
@@ -152,6 +224,8 @@ extension Calculator {
         digits: [Input.Digit] = [],
         lastOperand: Operand? = nil,
         lastBinaryOperator: Input.Operator.BinaryOperator? = nil
+        //        ,
+        //        newOperand: Operand? = nil
     ) -> Calculator {
         precondition(isRunningUnitTest())
         return .init(
@@ -159,6 +233,8 @@ extension Calculator {
             digits: digits,
             lastOperand: lastOperand,
             lastBinaryOperator: lastBinaryOperator
+            //            ,
+            //            newOperand: newOperand
         )
     }
 }
