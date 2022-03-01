@@ -15,23 +15,23 @@ final class Calculator: ObservableObject {
     private var lastBinaryOperator: Input.Operator.BinaryOperator? = nil
     private var value: Operand
     private var operandSavedToMemory: Operand?
-    //    private var newOperand: Operand
+    private var newOperand: Operand?
     
     private init(
         value: Operand = 0,
         digits: [Input.Digit] = [],
         lastOperand: Operand? = nil,
         lastBinaryOperator: Input.Operator.BinaryOperator? = nil,
-        operandSavedToMemory: Operand? = nil
-        //        ,
-        //        newOperand: Operand? = nil
+        operandSavedToMemory: Operand? = nil,
+        newOperand: Operand? = nil
+
     ) {
         self.value = value
         self.lastOperand = lastOperand ?? value
         self.digits = digits
         self.lastBinaryOperator = lastBinaryOperator
         self.operandSavedToMemory = operandSavedToMemory ?? value
-        //        self.newOperand = newOperand ?? 0
+        self.newOperand = newOperand ?? 0
     }
     
 }
@@ -73,7 +73,7 @@ private extension Calculator {
             
         }
         
-        var newOperand = operandFromDigits(alsoClearDigits: true) // We know that we finished inputting wanted operand, prepare for entering a new operand
+        newOperand = operandFromDigits(alsoClearDigits: true) // We know that we finished inputting wanted operand, prepare for entering a new operand
         
         
         func todo() -> Operand {
@@ -82,9 +82,11 @@ private extension Calculator {
         }
         
         func updateValueWithResultOfLastBinaryOperator(with lhs: Operand, and rhs: Operand) -> Operand {
+            
             guard let lastBinaryOperator = lastBinaryOperator else {
-                lastOperand = newOperand
-                return newOperand
+                
+                lastOperand = newOperand!
+                return newOperand!
             }
             value = lastBinaryOperator.calculate(lhs, rhs)
             lastOperand = value
@@ -97,26 +99,29 @@ private extension Calculator {
         case .operator(let `operator`):
             switch `operator` {
             case .equal:
-                
-                return updateValueWithResultOfLastBinaryOperator(with: lastOperand, and: newOperand)
+
+                lastOperand = updateValueWithResultOfLastBinaryOperator(with: lastOperand, and: newOperand!)
+                return lastOperand
                 
             case .binaryOperator(let binaryOperator):
-                defer {
-                    lastBinaryOperator = binaryOperator
-                }
-                return updateValueWithResultOfLastBinaryOperator(with: lastOperand, and: newOperand)
+
+                    defer {
+                        lastBinaryOperator = binaryOperator
+                    }
+                        
+                return updateValueWithResultOfLastBinaryOperator(with: lastOperand, and: newOperand!)
                 
             case .unaryOperator(let unaryOperator):
                 switch unaryOperator {
                     //Negation not currently functional. Returns the optional default
                 case .negation:
                     if operandFromDigits() < 0 {
-
+                        
                         let numberString = digits.map({ String($0.rawValue) }).joined(separator: "")
                         value = abs(Operand(numberString) ?? 2)
                         return value
                     } else {
-                      let numberString = digits.map({ String($0.rawValue) }).joined(separator: "")
+                        let numberString = digits.map({ String($0.rawValue) }).joined(separator: "")
                         value = Operand(numberString) ?? 0
                         value = -value
                         return value
@@ -134,7 +139,8 @@ private extension Calculator {
             case .clear:
                 value = 0
                 newOperand = 0
-                lastOperand = 0
+                lastOperand = .init()
+                lastBinaryOperator = nil
                 digits = []
                 return 0
             case .saveNumber:
